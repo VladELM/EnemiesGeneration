@@ -298,6 +298,8 @@ MonoBehaviour:
   - {fileID: 1799215926}
   _minAngle: -180
   _maxAngle: 180
+  _minCoordinateValue: -50
+  _maxCoordinateValue: 50
 --- !u!4 &814899922
 Transform:
   m_ObjectHideFlags: 0

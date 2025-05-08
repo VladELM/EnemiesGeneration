@@ -10,6 +10,9 @@ public class Spawner : MonoBehaviour
     [SerializeField] private int _minAngle = -180;
     [SerializeField] private int _maxAngle = 180;
 
+    [SerializeField] private int _minCoordinateValue;
+    [SerializeField] private int _maxCoordinateValue;
+
 
     private void Start()
     {
@@ -18,8 +21,16 @@ public class Spawner : MonoBehaviour
 
     private void GenerateEnemy()
     {
-        GameObject enemyObject = Instantiate(_enemyPrefab).gameObject;
-        enemyObject.GetComponent<Enemy>().Initialize(GetSpawnPosiiton(), GetRandomRotationAngle());
+        Enemy enemy = Instantiate(_enemyPrefab);
+        enemy.Initialize(GetSpawnPosiiton(), GetRandomDirection(enemy.transform.position.y));
+    }
+
+    private Vector3 GetRandomDirection(float positionY)
+    {
+        int positionX = Random.Range(_minCoordinateValue, _maxCoordinateValue);
+        int positionZ = Random.Range(_minCoordinateValue, _maxCoordinateValue);
+
+        return new Vector3(positionX, positionY, positionZ);
     }
 
     private Vector3 GetSpawnPosiiton()
